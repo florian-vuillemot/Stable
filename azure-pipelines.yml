@@ -10,11 +10,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: sudo apt-get install julia
+- script: sudo apt-get update; sudo apt-get install julia
   displayName: 'Install Julia'
 
-- script: julia -e "using Pkg; Pkg.build()"
-  displayName: 'Build application'
-
-- script: julia --check-bounds=yes -e "Pkg; Pkg.test(coverage=true)"
-  displayName: 'Run test'
+- script: julia --project --check-bounds=yes -e 'import Pkg; Pkg.build(); Pkg.test("Stable"; coverage=true)'
+  displayName: 'Build and test'
