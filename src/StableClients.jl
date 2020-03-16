@@ -17,4 +17,3 @@ function removeclient(stableclients::StableClients, client::Clients.Client)::Sta
     delete!(stableclients.clients, client)
     stableclients    
 end
-

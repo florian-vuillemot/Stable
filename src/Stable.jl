@@ -6,6 +6,7 @@ using Clients
 include("./StableHorses.jl")
 include("./StableClients.jl")
 
+
 """
     ClientsAndHorses(clients, horses)
 
@@ -14,10 +15,10 @@ Horses of clients are directly save in clients element
 Horses of Stable are horses owned by the stable
 """
 struct ClientsAndHorses
-    clients::Clients.Client{Horses.Horse}  # Clients and theirs horses
+    clients::StableClients  # Clients and theirs horses
     horses::StableHorses  # Stable's horses
 
-    ClientsAndHorses(clients=Clients.Client(), horses=StableHorses()) = new(copy(clients), copy(horses))
+    ClientsAndHorses(clients=Set{Clients.Client}(), horses=Set{Horses.Horse}()) = new(StableClients(clients), StableHorses(horses))
 end
 
 end # module

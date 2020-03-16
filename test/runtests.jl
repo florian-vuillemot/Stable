@@ -87,3 +87,11 @@ end
         @test length(stableclients.clients) == 1
     end
 end
+
+
+@testset "Stable" begin
+    @testset "Constructor" begin
+        clientsandhorses = Stable.ClientsAndHorses()
+        
+    end
+end
