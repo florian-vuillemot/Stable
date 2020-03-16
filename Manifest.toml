@@ -5,7 +5,7 @@ uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 
 [[Clients]]
 deps = ["Dates", "Test"]
-git-tree-sha1 = "4643319aabdad8bd9eb7a6e49e85aa3683b846c2"
+git-tree-sha1 = "7460c0a243c942c8a5622357d3ae747aa17c4378"
 repo-rev = "master"
 repo-url = "lib/Clients"
 uuid = "f028236e-c2ae-4a53-b6e2-e353fe398ba2"
