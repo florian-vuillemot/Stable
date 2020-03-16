@@ -1,4 +1,0 @@
-[submodule "Stable/lib/Horses"]
-	path = Stable/lib/Horses
-	url = git@github.com:florian-vuillemot/Horses.git
-	branch = master
