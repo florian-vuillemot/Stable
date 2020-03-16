@@ -1,0 +1,6 @@
+[submodule "lib/Clients"]
+	path = lib/Clients
+	url = https://github.com/florian-vuillemot/Clients.git
+[submodule "lib/Horses"]
+	path = lib/Horses
+	url = https://github.com/florian-vuillemot/Horses.git
