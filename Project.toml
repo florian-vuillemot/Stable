@@ -5,4 +5,4 @@ version = "0.1.0"
 
 [deps]
 Clients = "f028236e-c2ae-4a53-b6e2-e353fe398ba2"
-Horses = "1c8392ef-0fbd-5062-a102-97292ebef496"
+Horses = "0d02718a-fff4-4e2b-8bb9-3f3601fd9b53"

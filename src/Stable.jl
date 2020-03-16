@@ -1,5 +1,9 @@
 module Stable
 
-greet() = print("Hello World!")
+using Horses
+
+horse = Horses.Horse("Maha")
+
+println(horse.name)
 
 end # module
