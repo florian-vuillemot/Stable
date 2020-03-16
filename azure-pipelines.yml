@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: apt-get install julia
+- script: sudo apt-get install julia
   displayName: 'Install Julia'
 
 - script: julia -e "using Pkg; Pkg.build()"
