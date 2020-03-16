@@ -13,8 +13,8 @@ steps:
 - script: apt-get install julia
   displayName: 'Install Julia'
 
-- script: julia -e "using Pkg; Pkg.build(); end"
+- script: julia -e "using Pkg; Pkg.build()"
   displayName: 'Build application'
 
-- script: julia --check-bounds=yes -e "Pkg; Pkg.test(coverage=true); end"
+- script: julia --check-bounds=yes -e "Pkg; Pkg.test(coverage=true)"
   displayName: 'Run test'
