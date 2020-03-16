@@ -1,0 +1,20 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'debian-latest'
+
+steps:
+- script: apt-get install julia
+  displayName: 'Install Julia'
+
+- script: julia -e "using Pkg; Pkg.build(); end"
+  displayName: 'Build application'
+
+- script: julia --check-bounds=yes -e "Pkg; Pkg.test(coverage=true); end"
+  displayName: 'Run test'
