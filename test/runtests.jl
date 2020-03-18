@@ -1,98 +1,84 @@
 using Test
 
-using Horses
-using Clients
 using Stable
 
-
-@testset "StableHorses" begin
-    horses = Set{Horses.Horse}([Horses.Horse("foo"), Horses.Horse("bar")])
-
-    @testset "Constructor" begin
-        stablehorses = Stable.StableHorses()
-
-        @test Stable.numberofhorse(stablehorses) == 0
-    end
-
-    @testset "Constructor with horses" begin
-        stablehorses = Stable.StableHorses(horses)
-
-        @test Stable.numberofhorse(stablehorses) == 2
-    end
-
-    @testset "Construction ensure copy of horses" begin
-        cpy = copy(horses)
-        stablehorses = Stable.StableHorses(cpy)
-
-        @test Stable.numberofhorse(stablehorses) == 2
-        pop!(cpy)
-        @test Stable.numberofhorse(stablehorses) == 2
-    end
-
-    @testset "Add horse" begin
-        horse = first(horses)
-        stablehorses = Stable.StableHorses()
-
-        Stable.addhorse(stablehorses, horse)
-        @test Stable.numberofhorse(stablehorses) == 1
-    end
-
-    @testset "Remove horse" begin
-        horse = first(horses)
-        stablehorses = Stable.StableHorses(horses)
-
-        Stable.removehorse(stablehorses, horse)
-        @test Stable.numberofhorse(stablehorses) == 1
-    end
-end
+include("StableClients.jl");
+include("StableHorses.jl");
 
 
-@testset "StableClients" begin
-    clients = Set{Clients.Client}([Clients.Client{Horses.Horse}("foo"), Clients.Client{Horses.Horse}("bar")])
-
-    @testset "Constructor" begin
-        stableclients = Stable.StableClients()
-
-        @test Stable.numberofclient(stableclients) == 0
-    end
-
-    @testset "Constructor with clients" begin
-        stableclients = Stable.StableClients(clients)
-
-        @test Stable.numberofclient(stableclients) == 2
-    end
-
-    @testset "Construction ensure copy of clients" begin
-        cpy = copy(clients)
-        stableclients = Stable.StableClients(cpy)
-
-        @test Stable.numberofclient(stableclients) == 2
-        pop!(cpy)
-        @test Stable.numberofclient(stableclients) == 2
-    end
-
-    @testset "Add client" begin
-        client = first(clients)
-        stableclients = Stable.StableClients()
-
-        Stable.addclient(stableclients, client)
-        @test Stable.numberofclient(stableclients) == 1
-    end
-
-    @testset "Remove client" begin
-        client = first(clients)
-        stableclients = Stable.StableClients(clients)
-
-        Stable.removeclient(stableclients, client)
-        @test Stable.numberofclient(stableclients) == 1
-    end
-end
-
-
-@testset "Stable" begin
+@testset "ClientsAndHorses" begin
     @testset "Constructor" begin
         clientsandhorses = Stable.ClientsAndHorses()
 
-        @test Stable.numberofhorse(clientsandhorses) == 0
+        @test Stable.numberofhorses(clientsandhorses) == 0
+        @test Stable.numberofclients(clientsandhorses) == 0
+    end
+
+    @testset "Add client" begin
+        client = Client{Horse}("foo")
+        clientsandhorses = Stable.ClientsAndHorses()
+
+        Stable.addclient!(clientsandhorses, client)
+
+        @test Stable.numberofclients(clientsandhorses) == 1
+        @test Stable.numberofhorses(clientsandhorses) == 0
+    end
+
+    @testset "Ensure unique client entry" begin
+        client = Client{Horse}("foo")
+        clientsandhorses = Stable.ClientsAndHorses()
+
+        Stable.addclient!(clientsandhorses, client)
+        
+        @test clientsandhorses == Stable.addclient!(clientsandhorses, client)
+        @test Stable.numberofclients(clientsandhorses) == 1
+        @test Stable.numberofhorses(clientsandhorses) == 0
+    end
+
+    @testset "Add clients" begin
+        client = Client{Horse}("foo")
+        client2 = Client{Horse}("bar")
+        
+        clientsandhorses = Stable.ClientsAndHorses()
+
+        Stable.addclient!(clientsandhorses, client)
+        Stable.addclient!(clientsandhorses, client2)
+
+        @test Stable.numberofclients(clientsandhorses) == 2
+        @test Stable.numberofhorses(clientsandhorses) == 0
+    end
+
+    @testset "Add horse" begin
+        horse = Horse("foo")
+        clientsandhorses = Stable.ClientsAndHorses()
+
+        Stable.addhorse!(clientsandhorses, horse)
+
+        @test Stable.numberofhorses(clientsandhorses) == 1
+        @test Stable.numberofclients(clientsandhorses) == 0
+    end
+
+    @testset "Ensure unique horse entry" begin
+        horse = Horse("foo")
+        clientsandhorses = Stable.ClientsAndHorses()
+
+        Stable.addhorse!(clientsandhorses, horse)
+        
+        @test clientsandhorses == Stable.addhorse!(clientsandhorses, horse)
+        @test Stable.numberofhorses(clientsandhorses) == 1
+        @test Stable.numberofclients(clientsandhorses) == 0
+    end
+
+    @testset "Add horses" begin
+        horse = Horse("foo")
+        horse2 = Horse("foo2")
+        
+        clientsandhorses = Stable.ClientsAndHorses()
+
+        Stable.addhorse!(clientsandhorses, horse)
+        Stable.addhorse!(clientsandhorses, horse2)
+
+        @test Stable.numberofhorses(clientsandhorses) == 2
+        @test Stable.numberofclients(clientsandhorses) == 0
     end
 end

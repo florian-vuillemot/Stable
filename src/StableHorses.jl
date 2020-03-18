@@ -1,23 +1,23 @@
-using Horses
+import Horses.Horse
 
 
 struct StableHorses
-    horses::Set{Horses.Horse}
+    horses::Set{Horse}
 
-    StableHorses(horses=Set{Horses.Horse}()) = new(copy(horses))
+    StableHorses(horses=Set{Horse}()) = new(copy(horses))
 end
 
 
-function addhorse(stablehorse::StableHorses, horse::Horses.Horse)::StableHorses
+function addhorse!(stablehorse::StableHorses, horse::Horse)::StableHorses
     push!(stablehorse.horses, horse)
     stablehorse    
 end
 
-function removehorse(stablehorse::StableHorses, horse::Horses.Horse)::StableHorses
+function removehorse(stablehorse::StableHorses, horse::Horse)::StableHorses
     delete!(stablehorse.horses, horse)
     stablehorse    
 end
 
-function numberofhorse(stablehorse::StableHorses)::Int
+function numberofhorses(stablehorse::StableHorses)::Int
     length(stablehorse.horses)
 end

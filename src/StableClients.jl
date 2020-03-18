@@ -1,23 +1,23 @@
-using Clients
+import Clients.Client
 
 
 struct StableClients
-    clients::Set{Clients.Client}
+    clients::Set{Client}
 
-    StableClients(clients=Set{Clients.Client}()) = new(copy(clients))
+    StableClients(clients=Set{Client}()) = new(copy(clients))
 end
 
 
-function addclient(stableclients::StableClients, client::Clients.Client)::StableClients
+function addclient!(stableclients::StableClients, client::Client)::StableClients
     push!(stableclients.clients, client)
     stableclients
 end
 
-function removeclient(stableclients::StableClients, client::Clients.Client)::StableClients
+function removeclient(stableclients::StableClients, client::Client)::StableClients
     delete!(stableclients.clients, client)
     stableclients    
 end
 
-function numberofclient(stableclients::StableClients)::Int
+function numberofclients(stableclients::StableClients)::Int
     length(stableclients.clients)
 end
