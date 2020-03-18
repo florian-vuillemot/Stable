@@ -17,3 +17,7 @@ function removeclient(stableclients::StableClients, client::Clients.Client)::Sta
     delete!(stableclients.clients, client)
     stableclients    
 end
+
+function numberofclient(stableclients::StableClients)::Int
+    length(stableclients.clients)
+end

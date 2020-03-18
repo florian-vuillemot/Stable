@@ -21,4 +21,12 @@ struct ClientsAndHorses
     ClientsAndHorses(clients=Set{Clients.Client}(), horses=Set{Horses.Horse}()) = new(StableClients(clients), StableHorses(horses))
 end
 
+function numberofclient(clientsandhorses::ClientsAndHorses)::Int
+    numberofclient(clientsandhorses.clients)
+end
+
+function numberofhorse(clientsandhorses::ClientsAndHorses)::Int
+    numberofhorse(clientsandhorses.horses)
+end
+
 end # module

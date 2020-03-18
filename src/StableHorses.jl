@@ -18,3 +18,6 @@ function removehorse(stablehorse::StableHorses, horse::Horses.Horse)::StableHors
     stablehorse    
 end
 
+function numberofhorse(stablehorse::StableHorses)::Int
+    length(stablehorse.horses)
+end

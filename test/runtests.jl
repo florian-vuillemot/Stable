@@ -11,22 +11,22 @@ using Stable
     @testset "Constructor" begin
         stablehorses = Stable.StableHorses()
 
-        @test length(stablehorses.horses) == 0
+        @test Stable.numberofhorse(stablehorses) == 0
     end
 
     @testset "Constructor with horses" begin
         stablehorses = Stable.StableHorses(horses)
 
-        @test length(stablehorses.horses) == 2
+        @test Stable.numberofhorse(stablehorses) == 2
     end
 
     @testset "Construction ensure copy of horses" begin
         cpy = copy(horses)
         stablehorses = Stable.StableHorses(cpy)
 
-        @test length(stablehorses.horses) == 2
+        @test Stable.numberofhorse(stablehorses) == 2
         pop!(cpy)
-        @test length(stablehorses.horses) == 2
+        @test Stable.numberofhorse(stablehorses) == 2
     end
 
     @testset "Add horse" begin
@@ -34,7 +34,7 @@ using Stable
         stablehorses = Stable.StableHorses()
 
         Stable.addhorse(stablehorses, horse)
-        @test length(stablehorses.horses) == 1
+        @test Stable.numberofhorse(stablehorses) == 1
     end
 
     @testset "Remove horse" begin
@@ -42,7 +42,7 @@ using Stable
         stablehorses = Stable.StableHorses(horses)
 
         Stable.removehorse(stablehorses, horse)
-        @test length(stablehorses.horses) == 1
+        @test Stable.numberofhorse(stablehorses) == 1
     end
 end
 
@@ -53,22 +53,22 @@ end
     @testset "Constructor" begin
         stableclients = Stable.StableClients()
 
-        @test length(stableclients.clients) == 0
+        @test Stable.numberofclient(stableclients) == 0
     end
 
     @testset "Constructor with clients" begin
         stableclients = Stable.StableClients(clients)
 
-        @test length(stableclients.clients) == 2
+        @test Stable.numberofclient(stableclients) == 2
     end
 
     @testset "Construction ensure copy of clients" begin
         cpy = copy(clients)
         stableclients = Stable.StableClients(cpy)
 
-        @test length(stableclients.clients) == 2
+        @test Stable.numberofclient(stableclients) == 2
         pop!(cpy)
-        @test length(stableclients.clients) == 2
+        @test Stable.numberofclient(stableclients) == 2
     end
 
     @testset "Add client" begin
@@ -76,7 +76,7 @@ end
         stableclients = Stable.StableClients()
 
         Stable.addclient(stableclients, client)
-        @test length(stableclients.clients) == 1
+        @test Stable.numberofclient(stableclients) == 1
     end
 
     @testset "Remove client" begin
@@ -84,7 +84,7 @@ end
         stableclients = Stable.StableClients(clients)
 
         Stable.removeclient(stableclients, client)
-        @test length(stableclients.clients) == 1
+        @test Stable.numberofclient(stableclients) == 1
     end
 end
 
@@ -92,6 +92,7 @@ end
 @testset "Stable" begin
     @testset "Constructor" begin
         clientsandhorses = Stable.ClientsAndHorses()
-        
+
+        @test Stable.numberofhorse(clientsandhorses) == 0
     end
 end
