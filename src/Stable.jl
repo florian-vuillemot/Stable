@@ -5,6 +5,8 @@ import Clients.Client
 
 include("./StableHorses.jl")
 include("./StableClients.jl")
+include("./StableEquipements.jl")
+include("./StableGeographicCoordinates.jl")
 
 
 """

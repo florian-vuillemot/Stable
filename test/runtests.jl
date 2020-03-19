@@ -4,6 +4,8 @@ using Stable
 
 include("StableClients.jl");
 include("StableHorses.jl");
+include("StableEquipements.jl");
+include("StableGeographicCoordinates.jl");
 
 
 @testset "ClientsAndHorses" begin

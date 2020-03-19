@@ -5,5 +5,7 @@ version = "0.1.0"
 
 [deps]
 Clients = "f028236e-c2ae-4a53-b6e2-e353fe398ba2"
+Equipements = "fdfb9996-1b98-41f1-ac47-1978de211a3a"
+GeographicCoordinates = "a7ba3ca2-51e2-4f0d-88b0-6adbeb785400"
 Horses = "0d02718a-fff4-4e2b-8bb9-3f3601fd9b53"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

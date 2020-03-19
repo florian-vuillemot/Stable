@@ -19,6 +19,22 @@ uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
 deps = ["Random", "Serialization", "Sockets"]
 uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
+[[Equipements]]
+deps = ["Test"]
+git-tree-sha1 = "6ebc1d69b96a10d3ddb4dc5f3f8ee6cd8bccf5d9"
+repo-rev = "master"
+repo-url = "lib/Equipements/"
+uuid = "fdfb9996-1b98-41f1-ac47-1978de211a3a"
+version = "0.1.0"
+
+[[GeographicCoordinates]]
+deps = ["Test"]
+git-tree-sha1 = "fe88303fe93489c0d26c4914d03be415fb206175"
+repo-rev = "master"
+repo-url = "lib/GeographicCoordinates"
+uuid = "a7ba3ca2-51e2-4f0d-88b0-6adbeb785400"
+version = "0.1.0"
+
 [[Horses]]
 deps = ["Dates", "Test"]
 git-tree-sha1 = "9a16db355be9a338f611814d287dee4b34177ff1"
